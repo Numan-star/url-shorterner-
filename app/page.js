@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import mainImage from "../public/team.jpg";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -38,8 +39,8 @@ export default function Home() {
 
         <div className="flex justify-center">
           <Image
-            src="/team.jpg"
-            alt="Example"
+            src={mainImage}
+            alt="main_image"
             width={700}
             height={600}
             className="mix-blend-darken"
