@@ -102,14 +102,14 @@ export default function Page() {
         {generatedShortUrl && (
           <div className="mt-4">
             <h2 className="text-gray-700 font-medium">Shortened URL:</h2>
-            <a
+            <Link
               href={generatedShortUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-700 underline break-all"
             >
               {generatedShortUrl}
-            </a>
+            </Link>
           </div>
         )}
 

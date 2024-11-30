@@ -13,8 +13,8 @@ const About = () => {
           social media or just clean up a messy URL, we&apos;ve got you covered.
         </p>
 
-        <div className="mt-8 flex justify-center space-x-8">
-          <div className="max-w-xs bg-white rounded-lg shadow-lg p-6">
+        <div className="mt-8 flex flex-wrap justify-center gap-8">
+          <div className="max-w-xs bg-white rounded-lg shadow-lg p-6 w-full sm:w-80 md:w-96">
             <h2 className="text-2xl font-semibold text-green-500">
               Simple & Fast
             </h2>
@@ -23,7 +23,7 @@ const About = () => {
               no fuss.
             </p>
           </div>
-          <div className="max-w-xs bg-white rounded-lg shadow-lg p-6">
+          <div className="max-w-xs bg-white rounded-lg shadow-lg p-6 w-full sm:w-80 md:w-96">
             <h2 className="text-2xl font-semibold text-green-500">
               Trackable Links
             </h2>
