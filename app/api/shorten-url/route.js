@@ -9,7 +9,6 @@ export async function POST(req) {
     const body = await req.json();
     const { longUrl, customShortUrl } = body;
 
-    // Validate input
     if (!longUrl || !customShortUrl) {
       return new Response(
         JSON.stringify({ message: "Invalid input: both fields are required." }),
@@ -17,7 +16,6 @@ export async function POST(req) {
       );
     }
 
-    // Check if the short URL already exists
     const existing = await collection.findOne({ shortUrl: customShortUrl });
     if (existing) {
       return new Response(
@@ -29,14 +27,13 @@ export async function POST(req) {
       );
     }
 
-    // Insert the new URL into the database
     await collection.insertOne({
       longUrl,
       shortUrl: customShortUrl,
       createdAt: new Date(),
     });
 
-    const shortUrl = `http://localhost:3000/api/${customShortUrl}`;
+    const shortUrl = `http://localhost:3000/${customShortUrl}`;
 
     return new Response(JSON.stringify({ shortUrl }), { status: 200 });
   } catch (error) {

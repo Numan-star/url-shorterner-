@@ -20,7 +20,6 @@ export default function Page() {
     setError("");
     setLoading(true);
 
-    // Simulate API call
     fetch("/api/shorten-url", {
       method: "POST",
       headers: {
@@ -32,8 +31,8 @@ export default function Page() {
       .then((data) => {
         if (data.shortUrl) {
           setGeneratedShortUrl(data.shortUrl);
-          setLongUrl(""); // Clear input field
-          setCustomShortUrl(""); // Clear custom short URL field
+          setLongUrl("");
+          setCustomShortUrl("");
         } else {
           setError(data.message || "An error occurred.");
         }
@@ -47,13 +46,12 @@ export default function Page() {
   };
 
   return (
-    <div className="flex mt-20 justify-center bg-gray-100 px-4">
+    <div className="flex justify-center bg-gray-100 px-4 items-center my-20">
       <div className="max-w-lg w-full bg-green-200 p-6 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center text-green-700 mb-4">
           URL Shortener
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Long URL Input */}
           <div>
             <label
               htmlFor="longUrl"
@@ -72,7 +70,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Custom Short URL Input */}
           <div>
             <label
               htmlFor="customShortUrl"
@@ -91,7 +88,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Submit Button */}
           <div>
             <button
               type="submit"
@@ -103,7 +99,6 @@ export default function Page() {
           </div>
         </form>
 
-        {/* Generated Short URL Output */}
         {generatedShortUrl && (
           <div className="mt-4">
             <h2 className="text-gray-700 font-medium">Shortened URL:</h2>
@@ -118,7 +113,6 @@ export default function Page() {
           </div>
         )}
 
-        {/* Error Message */}
         {error && <p className="mt-4 text-red-600 text-sm">{error}</p>}
       </div>
     </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export default function Home() {
@@ -13,7 +14,6 @@ export default function Home() {
       className={`${poppins.className} flex items-center min-h-screen py-6 px-2 bg-green-200`}
     >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-green-200">
-        {/* Text Section */}
         <div className="text-center md:text-left">
           <h1 className="text-4xl text-center font-bold text-gray-800 mb-4">
             Welcome to the URL Shortener
@@ -22,7 +22,6 @@ export default function Home() {
             Simplify your links and share them effortlessly. Transform long URLs
             into compact, easy-to-manage links with our URL Shortener.
           </p>
-          {/* Buttons */}
           <div className="flex flex-row justify-center md:flex-row gap-4">
             <Link href="/shorten">
               <button className="px-4 py-2 text-sm shadow hover:shadow-lg bg-green-600 text-white rounded-md hover:bg-green-500 transition">
@@ -37,7 +36,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Image Section */}
         <div className="flex justify-center">
           <Image
             src="/team.jpg"

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
+
 import Image from "next/image";
 
 import logo from "../public/logo.jpeg";
@@ -45,7 +46,7 @@ export default function Navbar() {
             href="/about"
             className="text-white hover:text-gray-200 transition duration-200 px-4 py-1"
           >
-            About
+            About Us
           </Link>
           <Link
             href="/shorten"
@@ -54,10 +55,10 @@ export default function Navbar() {
             Shorten
           </Link>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="text-white hover:text-gray-200 transition duration-200 px-4 py-1"
           >
-            Contact
+            Contact Us
           </Link>
 
           <div className="flex gap-3">
@@ -115,7 +116,7 @@ export default function Navbar() {
             href="/about"
             className="block text-white py-2 text-lg hover:text-gray-200"
           >
-            About
+            About Us
           </Link>
           <Link
             href="/shorten"
@@ -124,10 +125,10 @@ export default function Navbar() {
             Shorten
           </Link>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="block text-white py-2 text-lg hover:text-gray-200"
           >
-            Contact
+            Contact Us
           </Link>
         </div>
       </div>
