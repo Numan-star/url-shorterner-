@@ -43,6 +43,7 @@ export default function Home() {
             width={700}
             height={600}
             className="mix-blend-darken"
+            priority
           />
         </div>
       </div>
