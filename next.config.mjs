@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  serverExternalPackages: ["oracledb"],
 
-export default nextConfig;
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = [...(config.externals || []), "oracledb"];
+    }
+    return config;
+  },
+};
+
+module.exports = nextConfig;

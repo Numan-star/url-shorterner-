@@ -1,7 +1,7 @@
 import clientPromise from "@/lib/mongodb";
 
 export async function GET(req, context) {
-  const { shortUrl } = context.params; // Use 'context' to access 'params'
+  const { shortUrl } = context.params;
 
   try {
     const client = await clientPromise;
