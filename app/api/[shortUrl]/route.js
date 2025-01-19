@@ -7,9 +7,7 @@ export async function GET(req, context) {
     const client = await clientPromise;
     const db = client.db("url-shortner");
     const collection = db.collection("urls");
-
     const result = await collection.findOne({ shortUrl });
-
     if (!result) {
       return new Response(JSON.stringify({ message: "Short URL not found." }), {
         status: 404,
