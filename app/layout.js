@@ -17,11 +17,17 @@ const geistMono = localFont({
 export const metadata = {
   title: "URL Shorterner By Numan Star",
   description: "URL Shorterner helps you Shorten your url easily",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
