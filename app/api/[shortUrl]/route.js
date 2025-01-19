@@ -1,7 +1,8 @@
 import clientPromise from "@/lib/mongodb";
 
-export async function GET(req, { params }) {
-  const { shortUrl } = params;
+export async function GET(req, context) {
+  const { shortUrl } = context.params; // Use 'context' to access 'params'
+
   try {
     const client = await clientPromise;
     const db = client.db("url-shortner");
