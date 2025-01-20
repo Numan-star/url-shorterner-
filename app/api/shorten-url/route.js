@@ -37,7 +37,7 @@ export async function POST(req) {
     });
 
     // Generate response URL
-    const shortUrl = `http://localhost:3000/${customShortUrl}`;
+    const shortUrl = `https://url-shtnr.vercel.app/${customShortUrl}`;
 
     return new Response(JSON.stringify({ shortUrl }), { status: 200 });
   } catch (error) {
