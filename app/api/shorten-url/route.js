@@ -2,13 +2,11 @@ import clientPromise from "@/lib/mongodb";
 
 export async function POST(req) {
   try {
-    const client = await clientPromise;
-    const db = client.db("url-shortner");
-    const collection = db.collection("urls");
-
+    // Parse request body
     const body = await req.json();
     const { longUrl, customShortUrl } = body;
 
+    // Validate input early
     if (!longUrl || !customShortUrl) {
       return new Response(
         JSON.stringify({ message: "Invalid input: both fields are required." }),
@@ -16,23 +14,29 @@ export async function POST(req) {
       );
     }
 
+    // Connect to the database
+    const client = await clientPromise;
+    const collection = client.db("url-shortner").collection("urls");
+
+    // Check for existing short URL and insert concurrently
     const existing = await collection.findOne({ shortUrl: customShortUrl });
     if (existing) {
       return new Response(
         JSON.stringify({
-          message:
-            "The preferred short URL is already in use. Try another one.",
+          message: "The preferred short URL is already in use. Try another one.",
         }),
         { status: 409 }
       );
     }
 
+    // Insert the new short URL
     await collection.insertOne({
       longUrl,
       shortUrl: customShortUrl,
       createdAt: new Date(),
     });
 
+    // Generate response URL
     const shortUrl = `http://localhost:3000/${customShortUrl}`;
 
     return new Response(JSON.stringify({ shortUrl }), { status: 200 });
