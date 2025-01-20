@@ -1,27 +1,55 @@
 import clientPromise from "@/lib/mongodb";
 
-export async function GET(req, context) {
-  const { shortUrl } = context.params;
+// export async function GET(req, context) {
+//   const { shortUrl } = context.params;
 
+//   try {
+//     const client = await clientPromise;
+//     const db = client.db("url-shortner");
+//     const collection = db.collection("urls");
+//     const result = await collection.findOne({ shortUrl });
+//     if (!result) {
+//       return new Response(JSON.stringify({ message: "Short URL not found." }), {
+//         status: 404,
+//       });
+//     }
+
+//     return new Response(null, {
+//       status: 301,
+//       headers: { Location: result.longUrl },
+//     });
+//   } catch (error) {
+//     console.error("Error in GET handler:", error);
+//     return new Response(JSON.stringify({ message: "Internal server error" }), {
+//       status: 500,
+//     });
+//   }
+// }
+
+
+export async function GET(req, context) {
   try {
+    const params = await context.params;
+    const { shortUrl } = params;
+
     const client = await clientPromise;
     const db = client.db("url-shortner");
     const collection = db.collection("urls");
-    const result = await collection.findOne({ shortUrl });
-    if (!result) {
-      return new Response(JSON.stringify({ message: "Short URL not found." }), {
-        status: 404,
-      });
-    }
 
-    return new Response(null, {
-      status: 301,
-      headers: { Location: result.longUrl },
-    });
+    const result = await collection.findOne({ shortUrl });
+
+    if (result) {
+      // return new Response(JSON.stringify(result), { status: 200 });
+
+      return new Response(null, {
+        status: 301,
+        headers: { Location: result.longUrl },
+      });
+    } else {
+      return new Response("Not Found", { status: 404 });
+    }
   } catch (error) {
-    console.error("Error in GET handler:", error);
-    return new Response(JSON.stringify({ message: "Internal server error" }), {
-      status: 500,
-    });
+    console.error("Error fetching short URL:", error);
+    return new Response("Internal Server Error", { status: 500 });
   }
 }

@@ -47,7 +47,7 @@ export default function Page() {
   };
 
   return (
-    <div className="flex justify-center bg-gray-100 px-4 items-center my-20">
+    <div className="flex justify-center bg-white px-4 items-center my-20">
       <div className="max-w-lg w-full bg-green-200 p-6 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-center text-green-700 mb-4">
           URL Shortener
